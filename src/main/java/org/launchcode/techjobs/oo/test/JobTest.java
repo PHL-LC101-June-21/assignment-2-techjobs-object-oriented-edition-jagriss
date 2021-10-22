@@ -47,16 +47,32 @@ public class JobTest {
 
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
+        Job aJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String [] aNewJob = aJob.toString().split("\n");
+        System.out.println(aJob.toString().charAt(0) == '\n');
+        assertEquals('\n', aJob.toString().charAt(0));
+        assertEquals('\n', aJob.toString().charAt(aJob.toString().length()-1));
+//        assertEquals('\n', aNewJob[aNewJob.length-1]);
 
     }
 
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
+        Job aJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));;
+        String [] actual = aJob.toString().split("\n");
 
+        assertEquals("ID: 4", actual[1]);
+        assertEquals("Name: Product tester", actual[2]);
+        assertEquals("Employer: ACME", actual[3]);
+        assertEquals("Location: Desert", actual[4]);
+        assertEquals("Position Type: Quality control", actual[5]);
+        assertEquals("Core Competency: Persistence", actual[6]);
     }
     @Test
     public void testToStringHandlesEmptyField() {
-
+        Job aJob = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));;
+        String [] actual = aJob.toString().split("\n");
+        assertEquals("Name: Data not available", actual[2]);
     }
 
 }
