@@ -52,7 +52,6 @@ public class JobTest {
         System.out.println(aJob.toString().charAt(0) == '\n');
         assertEquals('\n', aJob.toString().charAt(0));
         assertEquals('\n', aJob.toString().charAt(aJob.toString().length()-1));
-//        assertEquals('\n', aNewJob[aNewJob.length-1]);
 
     }
 
@@ -72,6 +71,7 @@ public class JobTest {
     public void testToStringHandlesEmptyField() {
         Job aJob = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));;
         String [] actual = aJob.toString().split("\n");
+//        System.out.println(actual);
         assertEquals("Name: Data not available", actual[2]);
     }
 
